@@ -29,6 +29,9 @@ import express, {
 //     console.log('MongoDB database connection established successfully');
 //   });
 
+
+
+
  app.get("/", (req: Request, res: Response, next: NextFunction) => {
     res.send("Hello from ts app");
   });
