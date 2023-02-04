@@ -35,7 +35,6 @@ export const register = async (req: Request, res: Response) => {
     if (err instanceof Error) {
         errorMessage = err.message;
       }
-    //   console.log(errorMessage);
     res.status(500).send('errorMessage');
     }};
 
@@ -72,7 +71,6 @@ res.json({
     if (err instanceof Error) {
         errorMessage = err.message;
       }
-    //   console.log(errorMessage);
     res.status(500).send('errorMessage');
     }};
     
