@@ -12,7 +12,7 @@ import express, {
   import cors from 'cors';
   import routes from './routes';
   import adminRoutes from './routes/index';
-  import { pool } from './db';
+  import { pool } from 'db';
 
 
   config()
@@ -83,9 +83,9 @@ import express, {
 
 
   app.post('/group/invitation/reject', async (req, res) => {
-    const { groupId, userId } = req.body;
+    const { groupId, usersId } = req.body;
     try {
-      await connection.query('UPDATE group_members SET status = $1 WHERE group_id = $2 AND member_id = $3', ['rejected', groupId, userId]);
+     const newInvitationRejected =  await pool.query('UPDATE group_members SET status = $1 WHERE group_id = $2 AND member_id = $3', ['rejected', groupId, usersId]);
       return res.status(200).json({ message: 'Invitation Rejected' });
     } catch (err) {
       let errorMessage = "Invitation Unsuccessful";

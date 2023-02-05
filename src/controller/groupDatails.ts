@@ -5,8 +5,12 @@ export async function getGroups(req: Request, res: Response) {
     try {
       const result = await connection.query('SELECT * FROM groups');
       return res.status(200).json(result.rows);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
+    } catch (err) {
+        let errorMessage ="Group not Found";
+    if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+      res.status(500).send('errorMessage');
     }
   }
   
