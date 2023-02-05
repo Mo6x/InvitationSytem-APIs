@@ -1,9 +1,14 @@
 CREATE DATABASE admin_database;
 
 
-CREATE TABLE admin (
-  id SERIAL PRIMARY KEY,
-  email TEXT NOT NULL UNIQUE,
-  password TEXT NOT NULL,
-  group_id INTEGER NOT NULL
+CREATE TABLE admins (
+  email varchar(255) PRIMARY KEY,
+  password bytea NOT NULL,
+  group_id integer NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT NOW(),
+  updated_at timestamptz NOT NULL DEFAULT NOW(),
+  UNIQUE (group_id),
+  CHECK (group_id > 0 AND group_id < 100)
 );
+
+CREATE INDEX idx_admins_group_id ON admins (group_id);

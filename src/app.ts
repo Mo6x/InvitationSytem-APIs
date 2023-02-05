@@ -12,7 +12,7 @@ import express, {
   import cors from 'cors';
   import routes from './routes';
   import adminRoutes from './routes/index';
-
+  import { pool } from './db';
 
 
   config()
@@ -48,21 +48,21 @@ import express, {
   //PI routes for retrieving information 
   //about groups and their members.
   app.get('/groups', async (req, res) => {
-    // Retrieve information about all groups
+    res.send(" Retrieve information about all groups");
   });
   
   app.get('/group/:groupId', async (req, res) => {
-    // Retrieve information about a specific group
+    res.send("Retrieve information about a specific group") ;
   });
   
   app.get('/group/:groupId/members', async (req, res) => {
-    // Retrieve information about all members in a specific group
+    res.send("Retrieve information about all members in a specific group");
   });
 
   //members to update their own information, 
  //such as their name or email address.
   app.put('/member', async (req, res) => {
-    // Update a member's information
+    res.send("Update a member's information");
   }); 
 
 
